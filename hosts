@@ -1,0 +1,4 @@
+
+[webservers]
+ubuntu-20 ansible_host=10.17.20.101 ansible_port=2222
+
