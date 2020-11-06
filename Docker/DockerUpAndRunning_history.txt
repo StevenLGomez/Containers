@@ -1,0 +1,101 @@
+
+# Text file containing commands run in the webinar documentation:
+# Docker_UpAndRunningWebinar_Day1.pdf
+
+# Slide 6
+docker pull redis:3.2.5
+docker pull node:5.7.1 
+docker pull progrium/stress:latest
+docker pull spkane/train-os:latest
+docker pull adejonge/helloworld:latest
+docker pull centos:latest   # This was added by me
+# There were some optional projects with stale links - omitted here
+
+
+# Slide 13
+
+# Loads latest debian (if necessary) and opens shell
+docker run -it --privileged --pid=host debian nsenter -t1 -m -u -i sh
+
+# See what OS version is on container
+cat /etc/os-release
+
+# Return to shell
+exit
+
+# Slide 15
+CHATOPS (nrrd doesn't exist on host)
+nrrd newrelic servers name chi-staging-docker-24
+
+# Slide 16
+# Launching your first container
+
+# List images available locally
+docker images
+
+# Run Fedora - display its version, exit
+docker run --rm -ti fedora:22 /bin/bash
+cat /etc/os-release
+exit
+
+# List images again
+docker images
+
+# View running containers
+docker ps
+
+# View ALL running containers
+docker ps -a
+
+# Slide 17
+# Exploring the Dockerfile
+cd
+mkdir docker-class
+git clone https://github.com/spkane/hubot-docker.git --config core.autocrlf=input
+cd hubot-docker
+
+# Open & explore Dockerfile in a text editor
+# Full Documentation:
+# https://docs.docker.com/engine/reference/builder/
+
+# Slide 18
+# Registering with docker hub
+# https://hub.docker.com
+
+docker login
+cat ~/.docker/config.json   # shows your local configuration
+
+# Slide 19
+# Create your image repository
+Click: Create Repository+
+Enter name: mybot
+Set visibility: public
+Click: Create
+
+# Slide 20
+# Building your first image
+export HUB_USER=${USER}
+docker images
+
+docker build -t ${HUB_USER}/mybot:latest .
+
+docker images
+docker push ${HUB_USER}/mybot:latest
+docker search ${HUB_USER}
+
+# Docker Hub API EXAMPLES - note jq not installed & yum -y install jq not successful
+curl -s -S "https://registry.hub.docker.com/v2/repositories/${HUB_USER}/mybot/tags/" | jq '."results"[]["name"]' | sort
+
+curl -s -S "https://registry.hub.docker.com/v2/repositories/strongloop/node/tags/" | jq '."results"[]["name"]' | sort
+
+# Slide 21
+# Configuration
+cat bin/hubot-env
+
+
+
+
+
+
+
+
