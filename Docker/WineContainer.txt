@@ -1,0 +1,23 @@
+
+# From:
+# http://alesnosek.com/blog/2015/07/04/running-wine-within-docker/
+
+# In a new directory, create 'Dockerfile' with contents:
+FROM debian:wheezy
+RUN dpkg --add-architecture i386
+RUN apt-get update
+RUN apt-get install --no-install-recommends --assume-yes wine
+ENV DISPLAY :0
+
+docker build --rm -t wine1.4 .    <= Fails with 404 Errors
+                                  <= The command '/bin/sh -c apt-get update' returned a non-zero code: 100
+                                  
+# Run Wine within the container
+docker run --rm wine1.4 wine "C:\windows\system32\notepad.exe"
+
+# The command above demonstrates that the X server needs to be configured.
+# The following instructs Docker to bind mount the /tmp/.X11-unix/X0 socket to 
+# the same location inside the container using the --volume parameter:
+docker run --rm --volume /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 wine1.4 wine "C:\windows\system32\notepad.exe"
+
+
