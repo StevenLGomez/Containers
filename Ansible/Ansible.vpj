@@ -3,7 +3,7 @@
     Version="10.0"
     VendorName="SlickEdit"
     TemplateName="Python - Empty Project"
-    WorkingDir="../repositories/playbooks">
+    WorkingDir="%v%rw">
     <Files>
         <Folder
             Name="Source Files"
