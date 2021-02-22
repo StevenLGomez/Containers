@@ -51,18 +51,6 @@
     </Config>
     <Files>
         <Folder
-            Name="Source Files"
-            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.scala;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
-            GUID="{71B263DE-BE1C-4C11-B1C7-25638DF1014A}"/>
-        <Folder
-            Name="Header Files"
-            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"
-            GUID="{CF0162FB-46CE-45C6-8545-F237B2DF477F}"/>
-        <Folder
-            Name="Resource Files"
-            Filters="*.ico;*.cur;*.dlg"
-            GUID="{A843CD24-BC3F-4FB8-B33A-4DC8BFDF9349}"/>
-        <Folder
             Name="Bitmaps"
             Filters="*.bmp"
             GUID="{5CBBE4E6-61A2-4F8F-A738-AE9DEB22D69A}"/>
@@ -70,5 +58,12 @@
             Name="Other Files"
             Filters=""
             GUID="{3A23870E-124B-4B4E-8909-C0E3A08EA41C}"/>
+        <Folder
+            Name="MyWine"
+            Filters=""
+            GUID="{317906FE-0FB6-4FA7-9766-F5403EC279A0}">
+            <F N="MyWine/Dockerfile"/>
+            <F N="MyWine/README.md"/>
+        </Folder>
     </Files>
 </Project>

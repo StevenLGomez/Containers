@@ -1,3 +1,10 @@
 
+# Ignore SlickEdit project files
 *.vpwhist*
 *vtg
+
+# Ignore directories of binary images used for Container templates
+Docker/MyWine/PT/
+Docker/MyWine/bta3d/
+
+
