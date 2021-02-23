@@ -11,7 +11,7 @@ RUN apt-get install --no-install-recommends --assume-yes wine
 # Install common applications
 RUN apt-get install -y git
 RUN apt-get install -y subversion
-RUN apt-get install -y python3.4
+RUN apt-get install -y python2.7
 
 # The following environment variable is probably required to run wine successfully ??
 ENV DISPLAY :0
@@ -37,5 +37,5 @@ ENV COMSPEC "C:\WINDOWS\system32\cmd.exe"
 ENV PTOOLS "C:\PT"
 #ENV PATH "C:\PT\opus;C:\PT\bmx\bin;C:\PT\tasm40\bin"
 
-ENV PY27 /usr/bin/python3.4
+ENV PY27 /usr/bin/python2.7
 
