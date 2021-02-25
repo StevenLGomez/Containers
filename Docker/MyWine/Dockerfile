@@ -8,6 +8,7 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y subversion
 RUN apt-get install -y python2.7
+RUN apt-get install -y nasm
 
 # Install wine32 & wine(64 bit)
 RUN apt-get install --no-install-recommends --assume-yes wine32
