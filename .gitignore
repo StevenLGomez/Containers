@@ -3,6 +3,9 @@
 *.vpwhist*
 *vtg
 
+# Ignore all zip files
+*.zip
+
 # Ignore directories of binary images used for Container templates
 Docker/MyWine/PT/
 Docker/MyWine/bta3d/

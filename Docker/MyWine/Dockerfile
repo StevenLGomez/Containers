@@ -1,8 +1,9 @@
 
-FROM docker.io/strm/debian32
+#FROM docker.io/strm/debian32
+FROM debian:buster
 
 RUN dpkg --add-architecture i386
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 
 # Install common applications
 RUN apt-get install -y git
@@ -26,7 +27,7 @@ ENV DISPLAY :0
 RUN /usr/bin/wine "C:\windows\system32\hostname.exe"
 
 # Populate the Windows file system created above with  the "Legacy" directory heirarchy 
-# of build tools as C:\PT from a previously seeded local directory tree (/opt/PT)
+# of build tools as C:\PT from a previously seeded local directory tree (./PT)
 COPY ./PT /root/.wine/drive_c/PT
 
 # And a (temporary) static copy of source code for testing prior to connecting to TeamCity
