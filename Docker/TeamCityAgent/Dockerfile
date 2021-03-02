@@ -8,16 +8,6 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y openjdk-11-jre-headless unzip
 
-# TODO - Add commands to open port 9090/tcp for agent communication
-# Error: DBUS_ERROR: Failed to connect to socket /var/run/dbus/system_bus_socket: No such file or directory
-# RUN apt-get install -y firewalld
-# RUN firewall-cmd --zone=public --permanent --add-port=9090/tcp
-# RUN firewall-cmd --reload
-
-# Informational firewall queries
-# RUN firewall-cmd --list-services       # Shows services that use standard ports
-# RUN firewall-cmd --list-ports          # Shows specific ports that are opened
-
 RUN useradd agent
 
 RUN mkdir /opt/BuildAgent
@@ -46,9 +36,11 @@ RUN sed -i 's/serverUrl=http\:\/\/localhost\:8111/serverUrl=http\:\/\/10.17.20.9
 # TODO - HOST_NAME didn't expand as desired
 # TODO - Actually, this should be left as name= and the hostname will be applied by the agent process
 # RUN sed -i "s/name=/name=${HOST_NAME}/g" opt/BuildAgent/conf/buildAgent.properties
-# RUN sed -i 's/name=/name=RogueContainer/g' opt/BuildAgent/conf/buildAgent.properties
+RUN sed -i 's/name=/name=podagent-01/g' opt/BuildAgent/conf/buildAgent.properties
 
 RUN chown -R agent:agent /opt/BuildAgent/*
+
+USER agent
 
 # Make the agent executable, then start it (NOTE must run as buildagent, NOT root)
 RUN chmod +x /opt/BuildAgent/bin/agent.sh
