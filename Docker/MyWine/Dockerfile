@@ -1,5 +1,4 @@
 
-#FROM docker.io/strm/debian32
 FROM debian:buster
 
 RUN dpkg --add-architecture i386
@@ -26,15 +25,7 @@ RUN apt-get install -y dosbox
 # The following environment variable is probably required to run wine successfully ??
 ENV DISPLAY :0
 
-# Create a directory that can be mapped as C:\tmp, and make it writable
-RUN mkdir /root/.wine/drive_c/tmp
-RUN chmod 777 /root/.wine/drive_c/tmp
-
-# Run a wine command that doesn't require parameters to initialize the Pseudo Windows file system
-# After running this command, the default i386 file system should exist as
-# /root/.wine/drive_c
-#RUN /usr/bin/wine "C:\windows\system32\hostname.exe"
-
+>>>>>>> 12ad2fc44a59261573dbead27ac1a26a8c312636
 # Populate the Windows file system created above with  the "Legacy" directory heirarchy 
 # of build tools as C:\PT from a previously seeded local directory tree (./PT)
 COPY ./PT /root/.wine/drive_c/PT
