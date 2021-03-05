@@ -1,0 +1,10 @@
+
+# Had to create the key:
+#    HKEY_CURRENT_USER -> Environment
+#
+# Then, inside that key, create the following string values
+# NOTE all of the following paths are in the "Windows" mapping, therefore need \\ everywhere
+
+PATH      C:\\windows;C:\\windows\\system32;C:\\PT\\opus;C:\\PT\bmx\\bin:C:\\PT\\tasm40\\BIN
+TEMP      C:\\tmp
+TMP       C:\\tmp

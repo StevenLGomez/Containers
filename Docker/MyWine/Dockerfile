@@ -16,7 +16,7 @@ RUN apt-get install --no-install-recommends --assume-yes wine32
 # Install wine (64 bit)
 RUN apt-get install --no-install-recommends --assume-yes wine
 
-ENV WINEARCH=win32
+#ENV WINEARCH=win32
 ENV WINEPREFIX=/root/.wine
 RUN wineboot
 
@@ -25,6 +25,10 @@ RUN apt-get install -y dosbox
 
 # The following environment variable is probably required to run wine successfully ??
 ENV DISPLAY :0
+
+# Create a directory that can be mapped as C:\tmp, and make it writable
+RUN mkdir /root/.wine/drive_c/tmp
+RUN chmod 777 /root/.wine/drive_c/tmp
 
 # Run a wine command that doesn't require parameters to initialize the Pseudo Windows file system
 # After running this command, the default i386 file system should exist as
@@ -36,8 +40,11 @@ ENV DISPLAY :0
 COPY ./PT /root/.wine/drive_c/PT
 #COPY ./PT /root/PT
 
-# And a (temporary) static copy of source code for testing prior to connecting to TeamCity
+# Create a (temporary) static copy of source code for testing prior to connecting to TeamCity
 COPY ./bta3d /root/.wine/drive_c/projects/bta3d
+
+# Copy the 'impossible' artifacts into the directory tree copied above
+COPY ./BacTArtifacts /root/.wine/drive_c/projects/bta3d
 
 # The following Environment Variable is required for Opus Make (will not run without it)
 ENV COMSPEC "C:\WINDOWS\system32\cmd.exe"

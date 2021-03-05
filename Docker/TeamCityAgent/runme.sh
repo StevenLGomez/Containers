@@ -8,6 +8,14 @@
 #    Will try setting it during the build (but it will be static :( )
 #    Dockerfile now includes a sed command to force the hostname used by TeamCity
 #
+#    Unused 
+#    --volume /tmp/.X11-unix/X0:/tmp/.X11-unix/X0       \
+#    --tty                                              \
+#    --rm                                               \
+#    --interactive                                      \
+#    --detach                                           \
+#    agent:0302 /bin/bash
+#
 podman run         \
     --rm                                               \
     --interactive                                      \
