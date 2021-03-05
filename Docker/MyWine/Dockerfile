@@ -25,7 +25,10 @@ RUN apt-get install -y dosbox
 # The following environment variable is probably required to run wine successfully ??
 ENV DISPLAY :0
 
->>>>>>> 12ad2fc44a59261573dbead27ac1a26a8c312636
+# Create a directory that can be mapped as C:\tmp, and make it writable
+RUN mkdir /root/.wine/drive_c/tmp
+RUN chmod 777 /root/.wine/drive_c/tmp
+
 # Populate the Windows file system created above with  the "Legacy" directory heirarchy 
 # of build tools as C:\PT from a previously seeded local directory tree (./PT)
 COPY ./PT /root/.wine/drive_c/PT
