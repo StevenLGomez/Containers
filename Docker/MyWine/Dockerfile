@@ -15,19 +15,22 @@ RUN apt-get install --no-install-recommends --assume-yes wine32
 # Install wine (64 bit)
 RUN apt-get install --no-install-recommends --assume-yes wine
 
-#ENV WINEARCH=win32
+ENV WINEARCH=win32
 ENV WINEPREFIX=/root/.wine
 RUN wineboot
 
 # Install DOSBox (needed for tasmx.exe, as reported by WINE & WINE32)
-RUN apt-get install -y dosbox
+# RUN apt-get install -y dosbox
 
-# The following environment variable is probably required to run wine successfully ??
+# The following environment variable is required for GUI applications with wine
 ENV DISPLAY :0
 
 # Create a directory that can be mapped as C:\tmp, and make it writable
 RUN mkdir /root/.wine/drive_c/tmp
 RUN chmod 777 /root/.wine/drive_c/tmp
+
+# Copy a seeded HKEY_CURRENT_USER registry mimic file (user.reg, seeded with PATH information)
+COPY ./user.reg /root/.wine/user.reg
 
 # Populate the Windows file system created above with  the "Legacy" directory heirarchy 
 # of build tools as C:\PT from a previously seeded local directory tree (./PT)
