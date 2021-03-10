@@ -6,5 +6,6 @@
 # NOTE all of the following paths are in the "Windows" mapping, therefore need \\ everywhere
 
 PATH      C:\\windows;C:\\windows\\system32;C:\\PT\\opus;C:\\PT\bmx\\bin:C:\\PT\\tasm40\\BIN
+          c:\\PT\\opus;c:\\windows;c:\\windows\\system32;c:\\PT\\bin;c:\\PT\\tasm40\\BIN
 TEMP      C:\\tmp
 TMP       C:\\tmp

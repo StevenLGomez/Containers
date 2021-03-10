@@ -142,7 +142,7 @@ WINE REGISTRY Version 2
 "Beep"="Yes"
 
 [Environment]
-"PATH"="c:\\windows;c:\\windows\\system32;c:\\PT\\tasm40\\BIN"
+"PATH"="c:\\PT\\opus;c:\\windows;c:\\windows\\system32;c:\\PT\\bin;c:\\PT\\tasm40\\BIN"
 "TEMP"="c:\\tmp"
 "TMP"="c:\\tmp"
 
