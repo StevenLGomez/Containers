@@ -3,5 +3,6 @@
     <Projects>
         <Project File="Ansible/Ansible.vpj"/>
         <Project File="Docker/Docker.vpj"/>
+        <Project File="Yocto/Yocto.vpj"/>
     </Projects>
 </Workspace>
