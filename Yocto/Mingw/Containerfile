@@ -1,0 +1,34 @@
+
+FROM docker.io/rockylinux/rockylinux:9.3
+
+RUN dnf -y update && \
+    dnf -y install 'dnf-command(config-manager)' && dnf config-manager --set-enabled crb && \
+    dnf -y install mingw64-gcc mingw64-gcc-c++ mingw64-libstdc++ mingw64-glib2 \
+        mingw64-glib2-static mingw64-pcre-static mingw64-pixman mingw64-win-iconv-static \
+        mingw64-zlib-static ncurses-devel
+
+RUN dnf -y install git wget tar gzip 
+
+# Copy legacy header stub into default ncurses directory
+COPY ./termios.h /usr/include/ncursesw
+
+ENV CPP=/usr/bin/x86_64-w64-mingw32-g++
+ENV CC=/usr/bin/x86_64-w64-mingw32-gcc
+ 
+# Create and set a non-root user
+# RUN groupadd -g 1000 developer \
+#     && useradd -u 1000 -g 1000 -m developer
+
+# COPY ./hello.cpp /home/developer
+# COPY ./worm.c /home/developer
+RUN mkdir /root/work
+# COPY ./test.c /root/work
+COPY ./hello.cpp /root/work
+COPY ./worm.c /root/work
+
+RUN dnf -y install gcc g++
+
+# USER developer
+
+# WORKDIR /home/developer
+
